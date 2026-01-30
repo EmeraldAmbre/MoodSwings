@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 2010992555750938727}
   - component: {fileID: 8627619698975882460}
   - component: {fileID: 7995712325229328934}
+  - component: {fileID: 4607822072990810933}
   m_Layer: 0
   m_Name: Player_pref
   m_TagString: Player
@@ -277,3 +278,17 @@ MonoBehaviour:
   _currentJumpBufferTime: 0
   _coyoteTime: 0.13
   _currentCoyoteTime: 0
+--- !u!114 &4607822072990810933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543221557032942091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50aef9eb159cbb0439d70a08716d6893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  _blinkDuration: 0.5
+  IsPlayerDead: 0

@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Instance = this;
     }
