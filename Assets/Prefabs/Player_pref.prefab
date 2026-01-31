@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 797631325082180569}
   m_Layer: 0
   m_Name: WallCheck Box
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1965347872443347228}
   m_Layer: 0
   m_Name: GroundCheck Box
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,6 +405,7 @@ MonoBehaviour:
   _player: {fileID: 7995712325229328934}
   _maskAbilities:
   - {fileID: 7388920273026791279}
+  _currentMask: {fileID: 0}
 --- !u!114 &7388920273026791279
 MonoBehaviour:
   m_ObjectHideFlags: 0
