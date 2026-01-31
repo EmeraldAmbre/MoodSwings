@@ -8,10 +8,9 @@ public class PlayerController : MonoBehaviour
     private bool _jumpHeld;
     private bool _isGrounded;
 
-    private Rigidbody2D _rigidbody;
+    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private BoxCollider2D _groundCollider;
-    private Animator _animator;
-
+    [SerializeField] private Animator _animator;
     [SerializeField] LayerMask _platformLayerMask;
 
     [Header("Player Move Parameters")]
@@ -47,6 +46,8 @@ public class PlayerController : MonoBehaviour
     private bool _hasJump = false;
     private bool _hasStartedCoyoteTimer = false;
     private bool _canJumpHigher = true;
+    private bool _canDoubleJump;
+    private bool _hasDoubleJumped;
 
     private InputSystem_Actions _input;
 
@@ -175,7 +176,11 @@ public class PlayerController : MonoBehaviour
 
         _isGrounded = raycastHitGround.collider != null;
 
-        if (_isGrounded) _canJumpHigher = true;
+        if (_isGrounded)
+        {
+            _canJumpHigher = true;
+            _hasDoubleJumped = false;
+        }
     }
 
     #region Rigibody modification related methods
@@ -233,12 +238,20 @@ public class PlayerController : MonoBehaviour
             //SoundManager.Instance.PlaySound("JumpImpact");
         }
 
+        // Normal jump
         if (_jumpPressed && _isGrounded)
         {
             _isJumpTriggered = true;
             _isGrounded = false;
             _hasJump = true;
         }
+        // Double jump
+        else if (_jumpPressed && !_isGrounded && _hasJump && _canDoubleJump && !_hasDoubleJumped)
+        {
+            _hasDoubleJumped = true;
+            _isJumpTriggered = true;
+        }
+        // Air handling
         else if (_jumpHeld && !_isGrounded && _hasJump && _rigidbody.linearVelocity.y > 0 && _canJumpHigher)
         {
             _isJumpgHanndlingTriggered = true;
@@ -296,6 +309,11 @@ public class PlayerController : MonoBehaviour
         {
             _currentCoyoteTime -= Time.deltaTime;
         }
+    }
+    public void EnableDoubleJump(bool value)
+    {
+        _canDoubleJump = value;
+        _hasDoubleJumped = false;
     }
     #endregion
 }
