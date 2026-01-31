@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 7169713202100344574}
   - component: {fileID: 7388920273026791279}
   - component: {fileID: 5500709798962931851}
+  - component: {fileID: 4928142052653459219}
   m_Layer: 0
   m_Name: Player_pref
   m_TagString: Player
@@ -356,9 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c252ba32ace3a4fba6f4dfd219b2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  _animator: {fileID: 0}
   _rigidbody: {fileID: 0}
   _groundCollider: {fileID: 1965347872443347228}
-  _animator: {fileID: 0}
   _platformLayerMask:
     serializedVersion: 2
     m_Bits: 192
@@ -381,6 +382,11 @@ MonoBehaviour:
   _dashForce: 20
   _dashDuration: 0.15
   _dashCooldown: 0.5
+  _pushForce: 5
+  _pushCheckDistance: 0.1
+  _pushableLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &4607822072990810933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,3 +455,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180134221b1c8e54f91aceb6c2a1db9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FearMask
+--- !u!114 &4928142052653459219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543221557032942091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e4c16e854ed8f44b66e351ce1f20f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AngerMask
