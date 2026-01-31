@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private float _blinkDuration = 1.5f;
     [SerializeField] private float _blinkInterval = 0.1f;
+    [SerializeField] private Transform _spawnPoint;
+
 
     private SpriteRenderer _spriteRenderer;
 
@@ -28,6 +30,15 @@ public class PlayerManager : MonoBehaviour
 
         Instance = this;
     }
+
+    private void Start()
+    {
+        if (_spawnPoint != null)
+        {
+            transform.position = _spawnPoint.position;
+        }
+    }
+
 
     private void Update()
     {
@@ -63,12 +74,6 @@ public class PlayerManager : MonoBehaviour
 
         // Blink during _blinkDuration time
         yield return StartCoroutine(Blink());
-        Die();
-    }
-
-    private void Die()
-    {
-        IsPlayerDead = true;
         Time.timeScale = 0f;
         OnPlayerDied?.Invoke();
     }
