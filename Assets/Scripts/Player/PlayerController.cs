@@ -256,6 +256,11 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Dash Methods
+    public void EnableDash(bool value)
+    {
+        _canDash = value;
+    }
+
     private void OnDash(InputAction.CallbackContext ctx)
     {
         if (!_canDash)
