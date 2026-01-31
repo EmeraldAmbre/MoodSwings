@@ -5,7 +5,8 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    [SerializeField] private float _blinkDuration = 0.5f;
+    [SerializeField] private float _blinkDuration = 1.5f;
+    [SerializeField] private float _blinkInterval = 0.1f;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -36,18 +37,33 @@ public class PlayerManager : MonoBehaviour
 
     private System.Collections.IEnumerator Blink()
     {
-        float duration = _blinkDuration;
-        float interval = 0.1f;
         float t = 0f;
 
-        while (t < duration)
+        while (t < _blinkDuration)
         {
             _spriteRenderer.enabled = !_spriteRenderer.enabled;
-            yield return new WaitForSeconds(interval);
-            t += interval;
+            yield return new WaitForSeconds(_blinkInterval);
+            t += _blinkInterval;
         }
 
         _spriteRenderer.enabled = true;
+    }
+
+    public void StartDeathSequence()
+    {
+        if (IsPlayerDead)
+            return;
+
+        StartCoroutine(DeathRoutine());
+    }
+
+    private System.Collections.IEnumerator DeathRoutine()
+    {
+        IsPlayerDead = true;
+
+        // Blink during _blinkDuration time
+        yield return StartCoroutine(Blink());
+        Die();
     }
 
     private void Die()

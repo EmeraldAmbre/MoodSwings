@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 8627619698975882460}
   - component: {fileID: 7995712325229328934}
   - component: {fileID: 4607822072990810933}
+  - component: {fileID: 1939844861219945140}
   m_Layer: 0
   m_Name: Player_pref
   m_TagString: Player
@@ -231,7 +232,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -290,5 +291,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aef9eb159cbb0439d70a08716d6893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
-  _blinkDuration: 0.5
+  _blinkDuration: 1.5
+  _blinkInterval: 0.1
   IsPlayerDead: 0
+--- !u!114 &1939844861219945140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543221557032942091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721026c1b157dc74ba2efc2582217786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTrapHitBox
