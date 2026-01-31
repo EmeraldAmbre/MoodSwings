@@ -7,9 +7,8 @@ public class MaskManager : MonoBehaviour
 
     [SerializeField] private PlayerController _player;
     [SerializeField] private MaskAbility[] _maskAbilities;
-
+    [SerializeField] private MaskAbility _currentMask;
     private Dictionary<MaskType, MaskAbility> _maskMap = new();
-    private MaskAbility _currentMask;
 
     private void Awake()
     {

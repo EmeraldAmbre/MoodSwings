@@ -9,7 +9,7 @@ public class PlayerTrapHitBox : MonoBehaviour
         if (_isDying)
             return;
 
-        if (other.CompareTag("trap"))
+        if (other.CompareTag("Trap"))
         {
             _isDying = true;
             PlayerManager.Instance.StartDeathSequence();
