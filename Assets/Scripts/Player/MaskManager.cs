@@ -6,38 +6,65 @@ public class MaskManager : MonoBehaviour
     public static MaskManager Instance { get; private set; }
 
     [SerializeField] private PlayerController _player;
-    [SerializeField] private MaskAbility[] _maskAbilities;
 
-    private Dictionary<MaskType, MaskAbility> _maskMap = new();
-    private MaskAbility _currentMask;
+    private List<MaskType> _unlockedMasks = new();
+
+    [SerializeField] private int _currentIndex = -1;
 
     private void Awake()
     {
         Instance = this;
-
-        foreach (var mask in _maskAbilities)
-        {
-            _maskMap.Add(mask.MaskType, mask);
-        }
     }
 
     public void UnlockMask(MaskType type)
     {
-        if (!_maskMap.ContainsKey(type))
+        if (_unlockedMasks.Contains(type))
             return;
 
-        if (_currentMask is null)
+        _unlockedMasks.Add(type);
+
+        if (_currentIndex == -1)
         {
-            EquipMask(type);
+            _currentIndex = 0;
+            EquipCurrent();
         }
     }
 
-    public void EquipMask(MaskType type)
+    public void SwitchMask(int direction)
     {
-        if (_currentMask is not null)
-            _currentMask.OnUnequip(_player);
+        if (_unlockedMasks.Count <= 1)
+            return;
 
-        _currentMask = _maskMap[type];
-        _currentMask.OnEquip(_player);
+        _currentIndex += direction;
+
+        if (_currentIndex < 0)
+            _currentIndex = _unlockedMasks.Count - 1;
+        else if (_currentIndex >= _unlockedMasks.Count)
+            _currentIndex = 0;
+
+        EquipCurrent();
+    }
+
+    private void EquipCurrent()
+    {
+        MaskType type = _unlockedMasks[_currentIndex];
+
+        foreach (var ability in GetComponents<MaskAbility>())
+            ability.OnUnequip(_player);
+
+        GetAbility(type).OnEquip(_player);
+        
+        // TODO : UI change
+    }
+
+    private MaskAbility GetAbility(MaskType type)
+    {
+        foreach (var ability in GetComponents<MaskAbility>())
+        {
+            if (ability.MaskType == type)
+                return ability;
+        }
+
+        return null;
     }
 }
