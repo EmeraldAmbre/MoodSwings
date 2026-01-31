@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 1939844861219945140}
   - component: {fileID: 7169713202100344574}
   - component: {fileID: 7388920273026791279}
+  - component: {fileID: 5500709798962931851}
   m_Layer: 0
   m_Name: Player_pref
   m_TagString: Player
@@ -377,6 +378,9 @@ MonoBehaviour:
   _jumpBufferTime: 0.14
   _coyoteTime: 0.13
   _currentCoyoteTime: 0
+  _dashForce: 20
+  _dashDuration: 0.15
+  _dashCooldown: 0.5
 --- !u!114 &4607822072990810933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,3 +437,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JoyMask
   _baseJumpForce: 12
   _boostedJumpForce: 13.5
+--- !u!114 &5500709798962931851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543221557032942091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180134221b1c8e54f91aceb6c2a1db9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FearMask

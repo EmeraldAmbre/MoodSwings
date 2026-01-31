@@ -53,6 +53,15 @@ public class PlayerController : MonoBehaviour
     private bool _canDoubleJump;
     private bool _hasDoubleJumped;
 
+    [Header("Dash Parameters")]
+    [SerializeField] private float _dashForce = 20f;
+    [SerializeField] private float _dashDuration = 0.15f;
+    [SerializeField] private float _dashCooldown = 0.5f;
+
+    private bool _canDash;
+    private bool _isDashing;
+    private float _lastDashTime;
+
     private InputSystem_Actions _input;
 
     private void InitInput()
@@ -63,6 +72,8 @@ public class PlayerController : MonoBehaviour
         _input.Player.Move.performed += OnPerformMove;
         _input.Player.Move.canceled += OnPerformMoveCanceled;
         _input.Player.SwitchMask.performed += OnSwitchMask;
+        _input.Player.Dash.started += OnDash;
+
         _input.Enable();
     }
 
@@ -73,6 +84,8 @@ public class PlayerController : MonoBehaviour
         _input.Player.Move.performed -= OnPerformMove;
         _input.Player.Move.canceled -= OnPerformMoveCanceled;
         _input.Player.SwitchMask.performed -= OnSwitchMask;
+        _input.Player.Dash.started -= OnDash;
+
         _input.Player.Disable();
     }
 
@@ -112,6 +125,13 @@ public class PlayerController : MonoBehaviour
         _rigidbody.linearVelocity = new Vector2(newX, _rigidbody.linearVelocity.y);
 
         ClampVelocity();
+
+        if (_isDashing)
+        {
+            ClampVelocity();
+            return;
+        }
+
     }
 
     private void Update()
@@ -228,8 +248,43 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Jump Methods
+    #region Dash Methods
+    private void OnDash(InputAction.CallbackContext ctx)
+    {
+        if (!_canDash)
+            return;
 
+        if (_isDashing)
+            return;
+
+        if (Time.time < _lastDashTime + _dashCooldown)
+            return;
+
+        StartCoroutine(DashRoutine());
+    }
+    private System.Collections.IEnumerator DashRoutine()
+    {
+        _isDashing = true;
+        _lastDashTime = Time.time;
+
+        float originalGravity = _rigidbody.gravityScale;
+        _rigidbody.gravityScale = 0f;
+
+        Vector2 dashDirection = _moveInput.x != 0
+            ? new Vector2(Mathf.Sign(_moveInput.x), 0)
+            : new Vector2(transform.localScale.x, 0);
+
+        _rigidbody.linearVelocity = Vector2.zero;
+        _rigidbody.AddForce(dashDirection * _dashForce, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(_dashDuration);
+
+        _rigidbody.gravityScale = originalGravity;
+        _isDashing = false;
+    }
+    #endregion
+
+    #region Jump Methods
     private void OnPerformJumpStarted(InputAction.CallbackContext ctx)
     {
         _jumpPressed = true;
