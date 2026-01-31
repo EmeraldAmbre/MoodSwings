@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 4607822072990810933}
   - component: {fileID: 1939844861219945140}
   - component: {fileID: 7169713202100344574}
+  - component: {fileID: 7388920273026791279}
   m_Layer: 0
   m_Name: Player_pref
   m_TagString: Player
@@ -402,3 +403,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaskManager
   _player: {fileID: 7995712325229328934}
+  _maskAbilities:
+  - {fileID: 7388920273026791279}
+--- !u!114 &7388920273026791279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543221557032942091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a331f0da3096b42b008b8a37f2ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JoyMask

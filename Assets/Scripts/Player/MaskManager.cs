@@ -6,39 +6,38 @@ public class MaskManager : MonoBehaviour
     public static MaskManager Instance { get; private set; }
 
     [SerializeField] private PlayerController _player;
+    [SerializeField] private MaskAbility[] _maskAbilities;
 
-    private Dictionary<MaskType, MaskAbility> _unlockedMasks = new();
+    private Dictionary<MaskType, MaskAbility> _maskMap = new();
     private MaskAbility _currentMask;
 
     private void Awake()
     {
         Instance = this;
+
+        foreach (var mask in _maskAbilities)
+        {
+            _maskMap.Add(mask.MaskType, mask);
+        }
     }
 
-    public void UnlockMask(MaskAbility mask)
+    public void UnlockMask(MaskType type)
     {
-        if (_unlockedMasks.ContainsKey(mask.MaskType))
+        if (!_maskMap.ContainsKey(type))
             return;
 
-        _unlockedMasks.Add(mask.MaskType, mask);
-
-        if (_currentMask == null)
+        if (_currentMask is null)
         {
-            EquipMask(mask.MaskType);
+            EquipMask(type);
         }
     }
 
     public void EquipMask(MaskType type)
     {
-        if (!_unlockedMasks.ContainsKey(type))
-            return;
-
-        if (_currentMask != null)
-        {
+        if (_currentMask is not null)
             _currentMask.OnUnequip(_player);
-        }
 
-        _currentMask = _unlockedMasks[type];
+        _currentMask = _maskMap[type];
         _currentMask.OnEquip(_player);
     }
 }
