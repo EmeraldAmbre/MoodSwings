@@ -335,5 +335,9 @@ public class PlayerController : MonoBehaviour
         _canDoubleJump = value;
         _hasDoubleJumped = false;
     }
+    public void ModifyJumpForce(float value)
+    {
+        _jumpForce = value;
+    }
     #endregion
 }
