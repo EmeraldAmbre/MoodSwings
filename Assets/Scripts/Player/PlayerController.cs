@@ -11,7 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private BoxCollider2D _groundCollider;
     [SerializeField] private Animator _animator;
+
+    [Header("Mask Switch Parameters")]
     [SerializeField] LayerMask _platformLayerMask;
+    [SerializeField] private float _maskSwitchCooldown = 0.25f;
+    private float _lastSwitchTime;
 
     [Header("Player Move Parameters")]
     [SerializeField] private float _movingSpeed = 5;
@@ -38,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump Buffering Parameters")]
     [SerializeField] private float _jumpBufferTime = 0.14f;
-    [SerializeField] private float _currentJumpBufferTime = 0;
+    private float _currentJumpBufferTime = 0;
 
     [Header("Coyote Jump Parameters")]
     [SerializeField] private float _coyoteTime = 0.13f;
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour
         _input.Player.Jump.canceled += OnPerformJumpCanceled;
         _input.Player.Move.performed += OnPerformMove;
         _input.Player.Move.canceled += OnPerformMoveCanceled;
+        _input.Player.SwitchMask.performed += OnSwitchMask;
         _input.Enable();
     }
 
@@ -67,6 +72,7 @@ public class PlayerController : MonoBehaviour
         _input.Player.Jump.canceled -= OnPerformJumpCanceled;
         _input.Player.Move.performed -= OnPerformMove;
         _input.Player.Move.canceled -= OnPerformMoveCanceled;
+        _input.Player.SwitchMask.performed -= OnSwitchMask;
         _input.Player.Disable();
     }
 
@@ -110,8 +116,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //if (PlayerManager.Instance.IsPlayerDead)
-        //    return;
+        if (PlayerManager.Instance.IsPlayerDead)
+            return;
 
         HandleFootsteps();
 
@@ -153,6 +159,20 @@ public class PlayerController : MonoBehaviour
     private void OnPerformMoveCanceled(InputAction.CallbackContext ctx)
     {
         _moveInput = Vector2.zero;
+    }
+
+    private void OnSwitchMask(InputAction.CallbackContext ctx)
+    {
+        if (Time.time < _lastSwitchTime + _maskSwitchCooldown)
+            return;
+
+        float value = ctx.ReadValue<float>();
+        if (Mathf.Abs(value) < 0.1f)
+            return;
+
+        _lastSwitchTime = Time.time;
+        int direction = value > 0 ? 1 : -1;
+        MaskManager.Instance.SwitchMask(direction);
     }
 
     private void HandleFlip()
