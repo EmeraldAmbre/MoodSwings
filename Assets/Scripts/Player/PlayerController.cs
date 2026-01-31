@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     private bool _jumpHeld;
     private bool _isGrounded;
 
+    [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private BoxCollider2D _groundCollider;
-    [SerializeField] private Animator _animator;
+    [SerializeField] LayerMask _platformLayerMask;
 
     [Header("Mask Switch Parameters")]
-    [SerializeField] LayerMask _platformLayerMask;
     [SerializeField] private float _maskSwitchCooldown = 0.25f;
     private float _lastSwitchTime;
 
@@ -57,10 +57,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _dashForce = 20f;
     [SerializeField] private float _dashDuration = 0.15f;
     [SerializeField] private float _dashCooldown = 0.5f;
-
     private bool _canDash;
     private bool _isDashing;
     private float _lastDashTime;
+
+    [Header("Push Block Parameters")]
+    [SerializeField] private float _pushForce = 5f;
+    [SerializeField] private float _pushCheckDistance = 0.1f;
+    [SerializeField] private LayerMask _pushableLayerMask;
+    private bool _canPush;
+    private PushableBlock _currentPushedBlock;
 
     private InputSystem_Actions _input;
 
@@ -132,6 +138,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        HandlePush();
     }
 
     private void Update()
@@ -282,6 +289,53 @@ public class PlayerController : MonoBehaviour
         _rigidbody.gravityScale = originalGravity;
         _isDashing = false;
     }
+    #endregion
+
+    #region Push Blocks Methods
+    public void EnablePush(bool value)
+    {
+        _canPush = value;
+    }
+    private void HandlePush()
+    {
+        if (!_canPush || Mathf.Abs(_moveInput.x) < 0.1f)
+        {
+            ReleasePush();
+            return;
+        }
+
+        Vector2 direction = new Vector2(Mathf.Sign(_moveInput.x), 0);
+        Vector2 origin = (Vector2)transform.position;
+
+        RaycastHit2D hit = Physics2D.Raycast(
+            origin,
+            direction,
+            _groundCollider.bounds.extents.x + _pushCheckDistance,
+            _pushableLayerMask
+        );
+
+        if (hit.collider != null)
+        {
+            PushableBlock block = hit.collider.GetComponent<PushableBlock>();
+            if (block != null)
+            {
+                _currentPushedBlock = block;
+                block.Push(direction, _pushForce);
+                return;
+            }
+        }
+
+        ReleasePush();
+    }
+    private void ReleasePush()
+    {
+        if (_currentPushedBlock != null)
+        {
+            _currentPushedBlock.Stop();
+            _currentPushedBlock = null;
+        }
+    }
+
     #endregion
 
     #region Jump Methods
