@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     private PushableBlock _currentPushedBlock;
 
     private InputSystem_Actions _input;
+    private PauseManager _pauseManager;
 
     private void InitInput()
     {
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
         _input.Player.Move.canceled += OnPerformMoveCanceled;
         _input.Player.SwitchMask.performed += OnSwitchMask;
         _input.Player.Dash.started += OnDash;
+        _input.Player.Pause.started += OnPausePressed;
 
         _input.Enable();
     }
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
         _input.Player.Move.canceled -= OnPerformMoveCanceled;
         _input.Player.SwitchMask.performed -= OnSwitchMask;
         _input.Player.Dash.started -= OnDash;
+        _input.Player.Pause.started -= OnPausePressed;
 
         _input.Player.Disable();
     }
@@ -100,6 +103,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _rigidbody.gravityScale = _initGravityScale;
+        _pauseManager = FindFirstObjectByType<PauseManager>();
     }
 
     private void Awake()
@@ -143,6 +147,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (_pauseManager != null && _pauseManager.IsPaused)
+            return;
+
         if (PlayerManager.Instance.IsPlayerDead)
             return;
 
@@ -152,7 +159,6 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsGrounded", _isGrounded);
         _animator.SetBool("IsDashing", _isDashing);
 
-
         HandleJumpBuffering();
         HandleCoyoteJump();
         HandleJump();
@@ -160,6 +166,13 @@ public class PlayerController : MonoBehaviour
         HandleFlip();
     }
 
+    private void OnPausePressed(InputAction.CallbackContext ctx)
+    {
+        if (_pauseManager == null)
+            return;
+
+        _pauseManager.TogglePause();
+    }
     private void HandleFootsteps()
     {
         bool isRunning = _isGrounded && Mathf.Abs(_rigidbody.linearVelocity.x) > 0.1f;
@@ -374,7 +387,7 @@ public class PlayerController : MonoBehaviour
         if (_isGrounded && _hasJump)
         {
             _hasJump = false;
-            //SoundManager.Instance.PlaySound("JumpImpact");
+            //SoundManager.Instance.PlaySound("jump_impact");
         }
 
         // Normal jump
