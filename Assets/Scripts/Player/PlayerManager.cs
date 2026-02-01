@@ -4,13 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
-
-    [SerializeField] private float _blinkDuration = 1.5f;
-    [SerializeField] private float _blinkInterval = 0.1f;
     [SerializeField] private Transform _spawnPoint;
-
-
-    private SpriteRenderer _spriteRenderer;
 
     public bool IsPlayerDead;
 
@@ -25,8 +19,6 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Instance = this;
     }
@@ -46,37 +38,26 @@ public class PlayerManager : MonoBehaviour
             return;
     }
 
-    private System.Collections.IEnumerator Blink()
-    {
-        float t = 0f;
-
-        while (t < _blinkDuration)
-        {
-            _spriteRenderer.enabled = !_spriteRenderer.enabled;
-            yield return new WaitForSeconds(_blinkInterval);
-            t += _blinkInterval;
-        }
-
-        _spriteRenderer.enabled = true;
-    }
-
     public void StartDeathSequence()
     {
         if (IsPlayerDead)
             return;
-
-        StartCoroutine(DeathRoutine());
+        
+        Death();
     }
 
-    private System.Collections.IEnumerator DeathRoutine()
+    private void Death()
     {
         IsPlayerDead = true;
-
-        // Blink during _blinkDuration time
-        yield return StartCoroutine(Blink());
-        Time.timeScale = 0f;
-        OnPlayerDied?.Invoke();
+        Respawn();
     }
+
+    private void Respawn()
+    {
+        transform.position = _spawnPoint.position;
+        IsPlayerDead = false;
+    }
+
 
     public void RestartGame()
     {

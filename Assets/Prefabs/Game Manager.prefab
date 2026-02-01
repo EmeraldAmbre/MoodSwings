@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5531339941399555633}
   - component: {fileID: 5157266033539967331}
+  - component: {fileID: 8786243920521317393}
+  - component: {fileID: 6350055658527819124}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -44,4 +46,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df51ad7d2151ba54390391c149630a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelMusic
-  _musicName: 
+  _musicName: interior_level1_music
+--- !u!114 &8786243920521317393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8082981419929750798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff83d5e1001537e48b0430c726d44621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  _musicList:
+  - {fileID: 8300000, guid: 72ce16811b21da044ac08db309fbbad4, type: 3}
+--- !u!114 &6350055658527819124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8082981419929750798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682a4dac9d31764ea759dbccfa86a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  _soundList: []
