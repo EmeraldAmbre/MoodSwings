@@ -16,6 +16,26 @@ PrefabInstance:
       propertyPath: _requiredMask
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 511131762076553918, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: _patternSprites
+      value: 
+      objectReference: {fileID: 427535959649392823}
+    - target: {fileID: 2493444937816383249, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493444937816383249, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3459712
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493444937816383249, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5999954
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726446769470326329, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: m_Name
+      value: FearLines
+      objectReference: {fileID: 0}
     - target: {fileID: 4279088696540199692, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_Name
       value: PlatformMask_Fear
@@ -26,15 +46,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5826686724520963896, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_Color.b
-      value: 0.836478
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5826686724520963896, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_Color.g
-      value: 0.4847721
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5826686724520963896, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_Color.r
-      value: 0.107847735
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6484187428160895553, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,6 +101,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+--- !u!212 &427535959649392823 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2493444937816383249, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+  m_PrefabInstance: {fileID: 2843063589031446438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!61 &7734880993744208039 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 5486305793757824769, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
