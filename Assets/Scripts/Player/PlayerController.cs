@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
         if (_stepTimer <= 0f)
         {
-            SoundManager.Instance.PlaySound($"step{_currentFootstepIndex}");
+            SoundManager.Instance.PlaySound($"step{_currentFootstepIndex}_sfx");
 
             _currentFootstepIndex++;
 
