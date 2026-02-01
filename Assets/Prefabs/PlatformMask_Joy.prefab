@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlatformMask_Joy
       objectReference: {fileID: 0}
+    - target: {fileID: 4279088696540199692, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5826686724520963896, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_Color.b
       value: 0.093192354
