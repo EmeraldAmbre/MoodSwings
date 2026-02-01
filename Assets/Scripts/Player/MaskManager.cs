@@ -11,6 +11,8 @@ public class MaskManager : MonoBehaviour
 
     [SerializeField] private int _currentIndex = -1;
 
+    public event System.Action<MaskType> OnMaskChanged;
+
     private void Awake()
     {
         Instance = this;

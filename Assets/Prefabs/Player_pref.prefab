@@ -66,7 +66,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.054882675, y: 0}
+  m_Offset: {x: -0.054882675, y: -0.037320137}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6155768, y: 1.91}
+  m_Size: {x: 0.6155768, y: 2.3027983}
   m_EdgeRadius: 0
 --- !u!1 &803321886013312283
 GameObject:
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.07, y: -0.95}
+  m_Offset: {x: 0, y: -1.21}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -154,7 +154,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.77, y: 0.05}
+  m_Size: {x: 1.05, y: 0.05}
   m_EdgeRadius: 0
 --- !u!1 &1543221557032942091
 GameObject:
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 7169713202100344574}
   - component: {fileID: 7388920273026791279}
   - component: {fileID: 5500709798962931851}
+  - component: {fileID: 4928142052653459219}
   m_Layer: 0
   m_Name: Player_pref
   m_TagString: Player
@@ -292,8 +293,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0021949708, y: 0.02}
-  m_Size: {x: 0.52485937, y: 1.96}
+  m_Offset: {x: -0.0021949708, y: -0.08561742}
+  m_Size: {x: 0.52485937, y: 2.2460778}
   m_Direction: 0
 --- !u!50 &2010992555750938727
 Rigidbody2D:
@@ -385,7 +386,7 @@ MonoBehaviour:
   _pushCheckDistance: 0.1
   _pushableLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!114 &4607822072990810933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,3 +455,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180134221b1c8e54f91aceb6c2a1db9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FearMask
+--- !u!114 &4928142052653459219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543221557032942091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e4c16e854ed8f44b66e351ce1f20f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AngerMask
