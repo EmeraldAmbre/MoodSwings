@@ -5,6 +5,7 @@ public class MaskPlatform : MonoBehaviour
     [SerializeField] private MaskType _requiredMask;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Collider2D _collider;
+    [SerializeField] private SpriteRenderer _patternSprites;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class MaskPlatform : MonoBehaviour
     private void SetActive(bool value)
     {
         _spriteRenderer.enabled = value;
+        _patternSprites.enabled = value;
         _collider.enabled = value;
     }
 }
