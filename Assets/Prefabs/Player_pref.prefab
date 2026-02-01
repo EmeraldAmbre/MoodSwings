@@ -66,7 +66,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.054882675, y: -0.037320137}
+  m_Offset: {x: -0.054882675, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6155768, y: 2.3027983}
+  m_Size: {x: 0.6155768, y: 1.91}
   m_EdgeRadius: 0
 --- !u!1 &803321886013312283
 GameObject:
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -1.21}
+  m_Offset: {x: -0.07, y: -0.95}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -154,7 +154,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.05, y: 0.05}
+  m_Size: {x: 0.77, y: 0.05}
   m_EdgeRadius: 0
 --- !u!1 &1543221557032942091
 GameObject:
@@ -292,8 +292,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0021949708, y: -0.08561742}
-  m_Size: {x: 0.52485937, y: 2.2460778}
+  m_Offset: {x: -0.0021949708, y: 0.02}
+  m_Size: {x: 0.52485937, y: 1.96}
   m_Direction: 0
 --- !u!50 &2010992555750938727
 Rigidbody2D:
@@ -356,9 +356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c252ba32ace3a4fba6f4dfd219b2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  _animator: {fileID: 0}
   _rigidbody: {fileID: 0}
   _groundCollider: {fileID: 1965347872443347228}
-  _animator: {fileID: 0}
   _platformLayerMask:
     serializedVersion: 2
     m_Bits: 192
@@ -381,6 +381,11 @@ MonoBehaviour:
   _dashForce: 20
   _dashDuration: 0.15
   _dashCooldown: 0.5
+  _pushForce: 5
+  _pushCheckDistance: 0.1
+  _pushableLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &4607822072990810933
 MonoBehaviour:
   m_ObjectHideFlags: 0
