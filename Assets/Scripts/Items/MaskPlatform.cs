@@ -7,16 +7,22 @@ public class MaskPlatform : MonoBehaviour
 
     private void Awake()
     {
-        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         SetActive(false);
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        MaskManager.Instance.OnMaskChanged += OnMaskChanged;
+        if (MaskManager.Instance != null)
+        {
+            MaskManager.Instance.OnMaskChanged += OnMaskChanged;
+        }
+        else
+        {
+            Debug.LogError("MaskManager.Instance is null (Start)");
+        }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (MaskManager.Instance != null)
             MaskManager.Instance.OnMaskChanged -= OnMaskChanged;
