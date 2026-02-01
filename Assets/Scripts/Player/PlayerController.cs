@@ -148,8 +148,10 @@ public class PlayerController : MonoBehaviour
 
         HandleFootsteps();
 
-        //_animator.SetFloat("Speed", Mathf.Abs(_moveInput.x));
-        //_animator.SetBool("IsGrounded", _isGrounded);
+        _animator.SetFloat("Speed", Mathf.Abs(_rigidbody.linearVelocity.x));
+        _animator.SetBool("IsGrounded", _isGrounded);
+        _animator.SetBool("IsDashing", _isDashing);
+
 
         HandleJumpBuffering();
         HandleCoyoteJump();
@@ -277,6 +279,7 @@ public class PlayerController : MonoBehaviour
     private System.Collections.IEnumerator DashRoutine()
     {
         _isDashing = true;
+        _animator.SetBool("IsDashing", true);
         _lastDashTime = Time.time;
 
         float originalGravity = _rigidbody.gravityScale;
@@ -293,6 +296,7 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody.gravityScale = originalGravity;
         _isDashing = false;
+        _animator.SetBool("IsDashing", false);
     }
     #endregion
 
@@ -359,6 +363,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, 0);
         _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
         _isGrounded = false;
+        _animator.SetTrigger("Jump");
         _hasJump = true;
         _currentCoyoteTime = 0;
 

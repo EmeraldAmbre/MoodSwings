@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AngerMask_pref
       objectReference: {fileID: 0}
+    - target: {fileID: 8060221318640193470, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: _maskType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
