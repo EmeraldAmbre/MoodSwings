@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &962556676070685745
+--- !u!1001 &2015439335202652110
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -87,26 +87,22 @@ PrefabInstance:
     - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 507503904145764707, guid: c2f29789bf4ca384d845af898c7dad7c, type: 3}
+      objectReference: {fileID: 4562014558038849306, guid: 0c9a2c94fee09e949b170f2d5f8d2b8a, type: 3}
     - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
       propertyPath: m_Color.b
-      value: 0.8930817
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
       propertyPath: m_Color.g
-      value: 0.68244916
+      value: 0.29644558
       objectReference: {fileID: 0}
     - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
       propertyPath: m_Color.r
-      value: 0.8855255
+      value: 0.8039216
       objectReference: {fileID: 0}
     - target: {fileID: 5251309215712276864, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
       propertyPath: m_Name
-      value: FearMask_pref
-      objectReference: {fileID: 0}
-    - target: {fileID: 8060221318640193470, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
-      propertyPath: _maskType
-      value: 1
+      value: AngerMask_pref
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

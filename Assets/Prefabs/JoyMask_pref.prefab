@@ -8,6 +8,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 259348479780729283, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_Size.x
+      value: 3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 259348479780729283, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_Size.y
+      value: 4.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 259348479780729283, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 259348479780729283, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 259348479780729283, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 518642387835202522, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 518642387835202522, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 518642387835202522, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 518642387835202522, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,9 +80,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 518642387835202522, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5531073552264363994, guid: 15c7e12bc7f932d40842add2ca0a8962, type: 3}
+    - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_Color.b
+      value: 0.29435137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7542946
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027447986866648598, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7610062
+      objectReference: {fileID: 0}
     - target: {fileID: 5251309215712276864, guid: 525d13c98a8b2474487ebdd38dbd9019, type: 3}
       propertyPath: m_Name
-      value: Mask_pref
+      value: JoyMask_pref
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
