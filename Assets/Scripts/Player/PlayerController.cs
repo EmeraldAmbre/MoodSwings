@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private BoxCollider2D _groundCollider;
     [SerializeField] LayerMask _platformLayerMask;
 
+    [Header("Footsteps")]
+    [SerializeField] private float _stepInterval = 0.4f;
+    private float _stepTimer;
+    private int _currentFootstepIndex = 1;
+    private const int _maxFootsteps = 8;
+
+
     [Header("Mask Switch Parameters")]
     [SerializeField] private float _maskSwitchCooldown = 0.25f;
     private float _lastSwitchTime;
@@ -30,12 +37,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _acceleration = 60f;
     [SerializeField] private float _deceleration = 80f;
 
-    [Header("Footsteps")]
-    [SerializeField] private float _stepInterval = 0.4f;
-    private float _stepTimer;
-    private bool _isJumpTriggered = false;
-    private bool _isJumpgHanndlingTriggered = false;
-
     [Header("Gravity Parameters")]
     [SerializeField] private float _initGravityScale = 5.35f;
     [SerializeField] private float _gravityScaleOnFall = 3.5f;
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
     private bool _canJumpHigher = true;
     private bool _canDoubleJump;
     private bool _hasDoubleJumped;
+    private bool _isJumpTriggered = false;
+    private bool _isJumpgHanndlingTriggered = false;
 
     [Header("Dash Parameters")]
     [SerializeField] private float _dashForce = 20f;
@@ -173,6 +176,7 @@ public class PlayerController : MonoBehaviour
 
         _pauseManager.TogglePause();
     }
+
     private void HandleFootsteps()
     {
         bool isRunning = _isGrounded && Mathf.Abs(_rigidbody.linearVelocity.x) > 0.1f;
@@ -187,11 +191,17 @@ public class PlayerController : MonoBehaviour
 
         if (_stepTimer <= 0f)
         {
-            //SoundManager.Instance.PlaySound("character_clothes");
+            SoundManager.Instance.PlaySound($"step{_currentFootstepIndex}");
+
+            _currentFootstepIndex++;
+
+            if (_currentFootstepIndex > _maxFootsteps)
+                _currentFootstepIndex = 1;
 
             _stepTimer = _stepInterval;
         }
     }
+
 
     private void OnPerformMove(InputAction.CallbackContext ctx)
     {

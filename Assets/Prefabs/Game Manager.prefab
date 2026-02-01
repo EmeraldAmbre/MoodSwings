@@ -73,4 +73,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d682a4dac9d31764ea759dbccfa86a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  _soundList: []
+  _soundList:
+  - {fileID: 8300000, guid: 60ee688acc4cb9f40973eff3df7becd1, type: 3}
+  - {fileID: 8300000, guid: 17e36da47a78f78418e2a93d10267dc1, type: 3}
+  - {fileID: 8300000, guid: d61d8290605800545aaf5bc70738ae6f, type: 3}
+  - {fileID: 8300000, guid: fbe2ba3c9de5d2b418aaf16410b7872e, type: 3}
+  - {fileID: 8300000, guid: c694a4b251b5be64987fea64b6d12738, type: 3}
+  - {fileID: 8300000, guid: 597659a966b228548934d7166cfab633, type: 3}
+  - {fileID: 8300000, guid: 8c2f34c022377e44f96fb5b8d65a03f4, type: 3}
+  - {fileID: 8300000, guid: 8ac3c9a73ec3ee34aa53f60b47e4d35c, type: 3}
