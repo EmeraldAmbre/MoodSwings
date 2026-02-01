@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: _collider
       value: 
       objectReference: {fileID: 9119132110682601406}
+    - target: {fileID: 511131762076553918, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: _requiredMask
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4279088696540199692, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_Name
       value: PlatformMask_Anger
