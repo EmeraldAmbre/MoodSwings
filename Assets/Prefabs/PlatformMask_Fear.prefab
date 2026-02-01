@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 511131762076553918, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
+      propertyPath: _requiredMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4279088696540199692, guid: c95639b221d7fc341b74dc8cd7f64377, type: 3}
       propertyPath: m_Name
       value: PlatformMask_Fear
