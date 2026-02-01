@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private int _currentFootstepIndex = 1;
     private const int _maxFootsteps = 8;
 
+    [Header("Dash Sounds")]
+    private int _currentDashSoundIndex = 1;
+    private const int _maxDashSounds = 3;
 
     [Header("Mask Switch Parameters")]
     [SerializeField] private float _maskSwitchCooldown = 0.25f;
@@ -285,7 +288,15 @@ public class PlayerController : MonoBehaviour
     {
         _canDash = value;
     }
+    private void PlayDashSound()
+    {
+        SoundManager.Instance.PlaySound($"dash{_currentDashSoundIndex}_sfx");
 
+        _currentDashSoundIndex++;
+
+        if (_currentDashSoundIndex > _maxDashSounds)
+            _currentDashSoundIndex = 1;
+    }
     private void OnDash(InputAction.CallbackContext ctx)
     {
         if (!_canDash)
@@ -304,6 +315,8 @@ public class PlayerController : MonoBehaviour
         _isDashing = true;
         _animator.SetBool("IsDashing", true);
         _lastDashTime = Time.time;
+
+        PlayDashSound();
 
         float originalGravity = _rigidbody.gravityScale;
         _rigidbody.gravityScale = 0f;
