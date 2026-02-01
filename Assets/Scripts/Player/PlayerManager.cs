@@ -6,9 +6,6 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
     [SerializeField] private Transform _spawnPoint;
 
-
-    private SpriteRenderer _spriteRenderer;
-
     public bool IsPlayerDead;
 
     public event System.Action OnPlayerDied;
@@ -22,8 +19,6 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Instance = this;
     }
@@ -60,7 +55,6 @@ public class PlayerManager : MonoBehaviour
     private void Respawn()
     {
         transform.position = _spawnPoint.position;
-        _spriteRenderer.enabled = true;
         IsPlayerDead = false;
     }
 
