@@ -74,9 +74,16 @@ public class PlayerManager : MonoBehaviour
 
         // Blink during _blinkDuration time
         yield return StartCoroutine(Blink());
-        Time.timeScale = 0f;
-        OnPlayerDied?.Invoke();
+        Respawn();
     }
+
+    private void Respawn()
+    {
+        transform.position = _spawnPoint.position;
+        _spriteRenderer.enabled = true;
+        IsPlayerDead = false;
+    }
+
 
     public void RestartGame()
     {
