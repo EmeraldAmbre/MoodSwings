@@ -22758,12 +22758,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2431767412468643348, guid: 986bd11bf6f9532468820043b3263293, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431767412468643348, guid: 986bd11bf6f9532468820043b3263293, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431767412468643348, guid: 986bd11bf6f9532468820043b3263293, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 2431767412468643348, guid: 986bd11bf6f9532468820043b3263293, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.5
+      value: 14.27
       objectReference: {fileID: 0}
     - target: {fileID: 2431767412468643348, guid: 986bd11bf6f9532468820043b3263293, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.9843416
+      value: -3.55
       objectReference: {fileID: 0}
     - target: {fileID: 2431767412468643348, guid: 986bd11bf6f9532468820043b3263293, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22800,6 +22812,10 @@ PrefabInstance:
     - target: {fileID: 3305925227884923985, guid: 986bd11bf6f9532468820043b3263293, type: 3}
       propertyPath: m_Name
       value: ExitDoor_pref
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781832551777757827, guid: 986bd11bf6f9532468820043b3263293, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
