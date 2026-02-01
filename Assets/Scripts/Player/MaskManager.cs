@@ -13,6 +13,8 @@ public class MaskManager : MonoBehaviour
 
     public event System.Action<MaskType> OnMaskChanged;
 
+    private MaskAbility _currentMask;
+
     private void Awake()
     {
         Instance = this;
@@ -51,13 +53,23 @@ public class MaskManager : MonoBehaviour
     {
         MaskType type = _unlockedMasks[_currentIndex];
 
-        foreach (var ability in GetComponents<MaskAbility>())
-            ability.OnUnequip(_player);
+        if (_currentMask != null)
+        {
+            _currentMask.OnUnequip(_player);
+        }
 
-        GetAbility(type).OnEquip(_player);
-        
-        // TODO : UI change
+        _currentMask = GetAbility(type);
+
+        if (_currentMask == null)
+        {
+            Debug.LogError($"MaskAbility manquante pour {type}");
+            return;
+        }
+
+        _currentMask.OnEquip(_player);
+        OnMaskChanged?.Invoke(_currentMask.MaskType);
     }
+
 
     private MaskAbility GetAbility(MaskType type)
     {
