@@ -2,17 +2,14 @@ using UnityEngine;
 
 public class PlayerTrapHitBox : MonoBehaviour
 {
-    private bool _isDying = false;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_isDying)
+        if (!other.CompareTag("Trap"))
             return;
 
-        if (other.CompareTag("Trap"))
-        {
-            _isDying = true;
-            PlayerManager.Instance.StartDeathSequence();
-        }
+        if (PlayerManager.Instance.IsPlayerDead)
+            return;
+
+        PlayerManager.Instance.StartDeathSequence();
     }
 }
