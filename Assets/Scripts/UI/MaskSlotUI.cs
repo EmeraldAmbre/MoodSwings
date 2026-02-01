@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MaskPlatform : MonoBehaviour
+public class MaskSlotUI : MonoBehaviour
 {
-    [SerializeField] private MaskType _requiredMask;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Collider2D _collider;
+    [SerializeField] private MaskType _maskType;
+    [SerializeField] private Image _background;
+
+    [Header("Colors")]
+    [SerializeField] private Color _inactiveColor = Color.gray;
+    [SerializeField] private Color _activeColor = Color.white;
 
     private void Awake()
     {
@@ -14,13 +18,7 @@ public class MaskPlatform : MonoBehaviour
     private void Start()
     {
         if (MaskManager.Instance != null)
-        {
             MaskManager.Instance.OnMaskChanged += OnMaskChanged;
-        }
-        else
-        {
-            Debug.LogError("MaskManager.Instance is null (Start)");
-        }
     }
 
     private void OnDestroy()
@@ -31,12 +29,11 @@ public class MaskPlatform : MonoBehaviour
 
     private void OnMaskChanged(MaskType activeMask)
     {
-        SetActive(activeMask == _requiredMask);
+        SetActive(activeMask == _maskType);
     }
 
     private void SetActive(bool value)
     {
-        _spriteRenderer.enabled = value;
-        _collider.enabled = value;
+        _background.color = value ? _activeColor : _inactiveColor;
     }
 }
